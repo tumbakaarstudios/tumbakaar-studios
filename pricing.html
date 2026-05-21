@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment & Packages | Tumbakaar Studios</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Dedicated Pricing Page Styles */
+        .pricing-hero {
+            background-color: var(--bg-cream);
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        
+        .pricing-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-hero p {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-nav-container {
+            position: sticky;
+            top: 75px;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(169, 135, 84, 0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .pricing-main-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pricing-tab-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-dark);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .pricing-tab-btn:hover {
+            background: rgba(169, 135, 84, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .pricing-tab-btn.active {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 8px 25px rgba(169, 135, 84, 0.25);
+        }
+
+        /* Sub-division toggle switcher */
+        .pricing-sub-selector {
+            display: flex;
+            justify-content: center;
+            margin: 2.5rem 0 3.5rem;
+        }
+
+        .pricing-sub-toggle {
+            background: #EFECE6;
+            border-radius: 50px;
+            padding: 0.4rem;
+            display: flex;
+            position: relative;
+            border: 1px solid rgba(169, 135, 84, 0.15);
+        }
+
+        .pricing-sub-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dark);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            z-index: 2;
+            transition: color 0.3s;
+        }
+
+        .pricing-sub-btn.active {
+            background: var(--text-dark);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Pricing Area Layout */
+        .pricing-category-content {
+            display: none;
+            animation: tabFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .pricing-category-content.active {
+            display: block;
+        }
+
+        .pricing-sub-content {
+            display: none;
+            animation: subFadeIn 0.5s ease forwards;
+        }
+
+        .pricing-sub-content.active {
+            display: block;
+        }
+
+        @keyframes tabFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subFadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Return arrow */
+        .return-bar {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .return-link {
+            color: var(--gold);
+            font-family: var(--font-body);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .return-link:hover {
+            color: var(--text-dark);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Logo_1.0.png" alt="Tumbakaar Studios">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#work">Work</a>
+                <a href="pricing.html" class="active">Pricing</a>
+                <a href="index.html#process">Process</a>
+            </div>
+            <a href="index.html#contact" class="btn btn-orange btn-pill">Book a Call</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <header class="pricing-hero">
+        <div class="container">
+            <div class="return-bar" style="max-width: 1200px; margin: 0 auto 2.5rem; padding: 0; text-align: left;">
+                <a href="index.html#pricing" class="return-link"><i class="fas fa-arrow-left"></i> Back to Studio Overview</a>
+            </div>
+            <h1>Invest in Your Visual Legacy.</h1>
+            <p>Select a category and project type to explore our highly transparent, premium package frameworks.</p>
+        </div>
+    </header>
+
+    <!-- Sticky Dual Tabs Navigation -->
+    <div class="pricing-nav-container">
+        <div class="container">
+            <div class="pricing-main-tabs">
+                <button class="pricing-tab-btn active" data-category="reels">Reels</button>
+                <button class="pricing-tab-btn" data-category="e-invites">E-Invites</button>
+                <button class="pricing-tab-btn" data-category="graphics">Graphics</button>
+                <button class="pricing-tab-btn" data-category="shoots">Shoots</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Content Section -->
+    <section class="section pt-0">
+        <div class="container">
+            
+            <!-- =========================================
+               1. REELS CATEGORY
+               ========================================= -->
+            <div class="pricing-category-content active" id="cat-reels">
+                <!-- Sub-division Switcher -->
+                <div class="pricing-sub-selector">
+                    <div class="pricing-sub-toggle">
+                        <button class="pricing-sub-btn active" data-sub="reels-social">Social Reels</button>
+                        <button class="pricing-sub-btn" data-sub="reels-brand">Brand Commercial Reels</button>
+                    </div>
+                </div>
+
+                <!-- Sub-division A: Social Reels -->
+                <div class="pricing-sub-content active" id="sub-reels-social">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">STARTER SPARK</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Social Reel</strong> (Up to 60 sec)<br>Made from your raw footage<br>Basic cuts & trending audio<br>Standard color grading<br>Clean subtitle overlays<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included</span></p>
+                                    <h4>₹499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 48 Hours</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Social+Reels:+Starter+Spark+(₹499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CREATOR BUNDLE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 High-Retention Reels</strong><br>Kinetic typography & captions<br>Smooth transition effects<br>Aesthetic color grading<br>Basic sound design (SFX)<br><span style="font-weight:600; color: var(--orange);">Save ₹150 Bundle Deal!</span></p>
+                                    <h4>₹1,349</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 4-5 Days</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Social+Reels:+Creator+Bundle+(₹1,349)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CUSTOM BUILD</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Bespoke Reels Series</strong><br>For long-form video editing<br>Advanced motion graphics & VFX<br>Specialized retainer contracts<br>2 Revisions included by default<br><span style="font-size: 0.9rem; color: #888;">Subsequent revisions chargeable</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Social+Reels:+Custom+Build#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-division B: Brand Commercial Reels -->
+                <div class="pricing-sub-content" id="sub-reels-brand">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">THE SPOTLIGHT</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Premium Commercial Reel</strong><br>Up to 60 sec runtime<br>Basic hook scripting<br>Advanced color grading<br>Premium sound design & FX<br>Clean logo & text overlays</p>
+                                    <h4>₹1,499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 3 Days</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Brand+Commercials:+The+Spotlight+(₹1,499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">THE GROWTH SUITE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 Commercial Ad Reels</strong><br>Competitor & market research<br>Advanced motion graphics<br>Product-focused pacing<br>Immersive audio soundscapes<br><span style="font-weight:600; color: var(--orange);">Save ₹500 Bundle Deal!</span></p>
+                                    <h4>₹3,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 7-9 Days</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Brand+Commercials:+The+Growth+Suite+(₹3,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CUSTOM BUILD</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Bespoke Brand Campaigns</strong><br>Full-funnel commercial reels<br>Cinema scale editing & grading<br>Storyboard & art direction<br>2 Revisions included by default<br><span style="font-size: 0.9rem; color: #888;">Subsequent revisions chargeable</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=reels&package=Brand+Commercials:+Custom+Build#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================
+               2. E-INVITES CATEGORY
+               ========================================= -->
+            <div class="pricing-category-content" id="cat-e-invites">
+                <!-- Sub-division Switcher -->
+                <div class="pricing-sub-selector">
+                    <div class="pricing-sub-toggle">
+                        <button class="pricing-sub-btn active" data-sub="invites-static">Static Royal E-Invites</button>
+                        <button class="pricing-sub-btn" data-sub="invites-animated">Animated Video E-Invites</button>
+                    </div>
+                </div>
+
+                <!-- Sub-division A: Static Royal E-Invites -->
+                <div class="pricing-sub-content active" id="sub-invites-static">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">SINGLE PAGE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1-Page Classic Invite</strong><br>High-Res Digital JPEG/PDF<br>Clean premium layout<br>Elegant typography design<br>Theme-matching colors<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included</span></p>
+                                    <h4>₹499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 24-48 Hours</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Static+Invites:+Single+Page+Classic+(₹499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">EVENT TRILOGY</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3-Page Set Premium Invite</strong><br>Cohesive event trilogy set<br>(e.g., Haldi, Sangeet, Wedding)<br>Royal gold or floral themes<br>RSVP page & timeline charts<br><span style="font-weight:600; color: var(--orange);">Save ₹200 Bundle Deal!</span></p>
+                                    <h4>₹1,299</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 3 Days</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Static+Invites:+Event+Trilogy+(₹1,299)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">THE DREAM THEME</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Interactive Layout Suite</strong><br>Clickable PDF link buttons<br>Bespoke hand-drawn illustrations<br>Multi-family layout variations<br>Custom venue maps & artwork<br><span style="font-size: 0.9rem; color: #888;">Caricatures: ₹300 per character</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Static+Invites:+The+Dream+Theme#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-division B: Animated Video E-Invites -->
+                <div class="pricing-sub-content" id="sub-invites-animated">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CINEMATIC TRIO</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 Slides Animated Video</strong><br>Up to 45 seconds runtime<br>Smooth background motion<br>Elegant slide text entries<br>Romantic traditional music<br><span style="font-size: 0.9rem; color: #888;">Caricature: Add at ₹300/each</span></p>
+                                    <h4>₹1,499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 3-4 Days</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Animated+Invites:+Cinematic+Trio+(₹1,499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">GRAND SAGA</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>5 Slides Premium Video</strong><br>Up to 60-75 seconds runtime<br>Character & elements pop-ups<br>Luxury motion transitions<br>High-end audio FX & sync<br><strong>2 Custom Caricatures Included!</strong></p>
+                                    <h4>₹3,399</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 5-6 Days</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Animated+Invites:+Grand+Saga+(₹3,399)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">THE DREAM THEME</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Bespoke Motion Masterpiece</strong><br>Clickable mini-website option<br>3D venue/character rendering<br>VIP music orchestration<br>Unlimited slides & story pacing<br><span style="font-size: 0.9rem; color: #888;">Extra caricatures at ₹300/each</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=e-invites&package=Animated+Invites:+The+Dream+Theme#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================
+               3. GRAPHICS CATEGORY
+               ========================================= -->
+            <div class="pricing-category-content" id="cat-graphics">
+                <!-- Sub-division Switcher -->
+                <div class="pricing-sub-selector">
+                    <div class="pricing-sub-toggle">
+                        <button class="pricing-sub-btn active" data-sub="graphics-social">Social Media Graphics</button>
+                        <button class="pricing-sub-btn" data-sub="graphics-identity">Visual Identity Suite</button>
+                    </div>
+                </div>
+
+                <!-- Sub-division A: Social Media Graphics -->
+                <div class="pricing-sub-content active" id="sub-graphics-social">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">SOLO CREATIVE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Custom Feed Asset</strong><br>Post, Story, or Banner format<br>Curated professional layout<br>Brand-aligned custom colors<br>Tailored typography guides<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included</span></p>
+                                    <h4>₹499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 24 Hours</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Social+Graphics:+Solo+Creative+(₹499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">GRID STARTER</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 Cohesive Feed Posts</strong><br>Consistent grid layout look<br>Reusable structured templates<br>High-converting copy overlays<br>Brand identity consistency<br><span style="font-weight:600; color: var(--orange);">Save ₹200 Bundle Deal!</span></p>
+                                    <h4>₹1,299</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 3 Days</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Social+Graphics:+Grid+Starter+(₹1,299)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">ENTERPRISE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Comprehensive Feed Design</strong><br>Monthly retainer campaign grid<br>UI/UX custom visual assets<br>Packaging & custom label design<br>High-end print brochures<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included by default</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Social+Graphics:+Enterprise#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-division B: Visual Identity Suite -->
+                <div class="pricing-sub-content" id="sub-graphics-identity">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CORE LOGO</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Professional Custom Logo</strong><br>Minimalist or modern styling<br>2 concepts to choose from<br>Transparent high-res files<br>Basic brand color palette sheet<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included</span></p>
+                                    <h4>₹1,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 3-4 Days</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Visual+Identity:+Core+Logo+(₹1,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">COMPLETE IDENTITY</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3-Asset Brand Identity Set</strong><br>1 Finalized Signature Logo<br>Custom Motion Logo Intro Video<br>1 Master Brand Guideline PDF<br>Premium vector source files<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included</span></p>
+                                    <h4>₹4,499</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Delivery: 7 Days</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Visual+Identity:+Complete+Identity+(₹4,499)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">ENTERPRISE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Bespoke Brand Rebrand</strong><br>3D animated visual assets<br>Print catalogs & styling guides<br>Full copyright transfers<br>Continuous styling support<br><span style="font-size: 0.9rem; color: #888;">2 Revisions included by default</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=graphics&package=Visual+Identity:+Enterprise#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================
+               4. SHOOTS CATEGORY
+               ========================================= -->
+            <div class="pricing-category-content" id="cat-shoots">
+                <!-- Sub-division Switcher -->
+                <div class="pricing-sub-selector">
+                    <div class="pricing-sub-toggle">
+                        <button class="pricing-sub-btn active" data-sub="shoots-photo">Premium Photography</button>
+                        <button class="pricing-sub-btn" data-sub="shoots-video">Cinematic Videography</button>
+                    </div>
+                </div>
+
+                <!-- Sub-division A: Premium Photography -->
+                <div class="pricing-sub-content active" id="sub-shoots-photo">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">QUICK PORTFOLIO</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Hour Shooting Time</strong><br>15 Retouched Images<br>Delivery of all raw clicks<br>Premium studio equipment<br><span style="font-size: 0.9rem; color: #888;">2 Revisions on editing</span><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>₹4,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Delivery</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Photography:+Quick+Portfolio+(₹4,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CAMPAIGN CATALOG</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 Hours On-Site Shoot</strong><br>50 Premium Retouched Images<br>Multiple product/outfit changes<br>Delivery of all raw clicks<br><span style="font-size: 0.9rem; color: #888;">2 Revisions on editing</span><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>₹11,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Delivery</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Photography:+Campaign+Catalog+(₹11,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">PRODUCTION SCALE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Full-Day Campaign Shoot</strong><br>VIP creative direction & styling<br>Indoor & outdoor setups<br>High-end cinema lighting gears<br><span style="font-size: 0.9rem; color: #888;">Custom Quote Only</span><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Photography:+Production+Scale#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-division B: Cinematic Videography -->
+                <div class="pricing-sub-content" id="sub-shoots-video">
+                    <div class="pricing-cards">
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">CONTENT SESSION</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>1 Hour Shooting Time</strong><br>Dedicated shoot for content/reels<br>Delivery of all raw high-res clicks<br>High-end camera gears<br><em>Editing is not included</em><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>₹5,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Raw footage delivery</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Videography:+Content+Session+(₹5,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape premium-card">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">BRAND CINEMATIC</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>3 Hours On-Site Shoot</strong><br>Cinema look tracking/gimbal shots<br>Studio level lighting designs<br>Delivery of all high-res raw clips<br><em>Editing is not included</em><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>₹14,999</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Raw footage delivery</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Videography:+Brand+Cinematic+(₹14,999)#contact" class="btn btn-orange btn-pill">BOOK NOW</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card die-cut-shape">
+                            <div class="pricing-inner">
+                                <div class="pricing-header"><div class="pill dark-pill-small">PRODUCTION SCALE</div></div>
+                                <div class="pricing-body">
+                                    <p><strong>Full-Day Event videography</strong><br>Multi-camera and drone operators<br>Pre-production script & timeline<br>Cinema scale gear setup<br><span style="font-size: 0.9rem; color: #888;">Custom Quote Only</span><br><span style="font-size: 0.8rem; color: #888;">Excludes travel & rentals</span></p>
+                                    <h4>Custom</h4>
+                                    <span style="font-size: 0.85rem; color: #777; display: block; margin-top: 0.3rem;">Tailored Timeline</span>
+                                </div>
+                                <a href="index.html?service=shoots&package=Videography:+Production+Scale#contact" class="btn btn-orange btn-pill">LET'S TALK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Disclaimer/Note -->
+            <div class="pricing-disclaimer-note scroll-animate" style="margin-top: 5rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; padding: 2rem 2.5rem; background: #F8F2E8; border: 1px dashed var(--gold); border-radius: 20px; box-shadow: 0 10px 30px rgba(169, 135, 84, 0.05); border-width: 2px;">
+                <div style="font-size: 1.5rem; color: var(--orange); margin-bottom: 0.8rem;"><i class="fas fa-info-circle"></i></div>
+                <h5 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-dark); margin-bottom: 0.5rem; font-weight: 600;">Important Booking Notes</h5>
+                <p style="font-family: var(--font-body); font-size: 0.98rem; color: #5D4037; line-height: 1.7; margin: 0;">
+                    Every package includes exactly <strong>2 rounds of revisions</strong>. Any subsequent revision requests will be charged at <strong>₹200 per round</strong>. Custom caricatures for E-invites are available at <strong>₹300 per character</strong>. All shoot prices exclude travel and location rental costs.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="premium-footer">
+        <div class="container footer-container">
+            <!-- Col 1: Brand -->
+            <div class="footer-brand">
+                <img src="images/Logo_1.0.png" alt="Tumbakaar Studios" class="footer-logo">
+                <p>Crafting bespoke visual legacies through award-winning video editing, animation, and digital invitations.</p>
+                <div class="footer-contact-direct">
+                    <a href="mailto:tumbakaarstudios@gmail.com"><i class="fas fa-envelope"></i> tumbakaarstudios@gmail.com</a>
+                    <a href="tel:+919304947979"><i class="fas fa-phone"></i> +91 93049 47979</a>
+                </div>
+            </div>
+
+            <!-- Col 2: Expertise -->
+            <div class="footer-links">
+                <h4>Our Expertise</h4>
+                <a href="index.html#services">Premium Video Editing</a>
+                <a href="index.html#services">Exquisite E-Invites</a>
+                <a href="index.html#services">Motion Graphics & 3D</a>
+                <a href="index.html#services">Royal Brand Stitch Mockups</a>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="index.html#work">Our Work Portfolio</a>
+                <a href="pricing.html">Investment & Packages</a>
+                <a href="index.html#process">The Creative Journey</a>
+                <a href="index.html#testimonials">Client Reviews</a>
+            </div>
+
+            <!-- Col 4: Socials -->
+            <div class="footer-links">
+                <h4>Connect With Us</h4>
+                <p class="social-desc">Follow our creative journey and latest projects.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tumbakaar Studios. All rights reserved. Crafting Visual Royalty.</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script JS -->
+    <script src="js/pricing.js"></script>
+</body>
+</html>
