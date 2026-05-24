@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Tumbakaar Studios</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --about-bg: var(--bg-cream);
+            --about-bg-card: #1c120e; /* Elegant dark card for stunning visual contrast */
+            --about-border: rgba(169, 135, 84, 0.2);
+            --gold-glow: rgba(169, 135, 84, 0.08);
+        }
+
+        body {
+            background-color: var(--about-bg);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+        }
+
+        /* Hero spotlight gradient */
+        .about-hero-container {
+            position: relative;
+            padding: 10rem 0 6rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-hero-glow {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(169, 135, 84, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        /* Hero Text Styles */
+        .hero-sub-label {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-sub-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold);
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 4.8rem;
+            line-height: 1.1;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title span.italic-gold {
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            color: #5D4037;
+            max-width: 580px;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-scroll-btn {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(62, 39, 35, 0.6);
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: color 0.3s;
+        }
+        .hero-scroll-btn:hover {
+            color: var(--gold);
+        }
+        .hero-scroll-btn i {
+            font-size: 0.8rem;
+            animation: bounce ease infinite 2s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Stats Grid Section */
+        .stats-section {
+            border-top: 1px solid var(--about-border);
+            border-bottom: 1px solid var(--about-border);
+            background: rgba(248, 242, 232, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-item {
+            padding: 3.5rem 2rem;
+            border-right: 1px solid var(--about-border);
+            transition: background 0.3s ease;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-item:hover {
+            background: rgba(169, 135, 84, 0.03);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            color: var(--gold);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #5D4037;
+            text-transform: uppercase;
+        }
+
+        /* The Studio & Founder Section */
+        .studio-founder-section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .grid-two-cols {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .studio-info {
+            padding-right: 2rem;
+        }
+
+        .section-sub-label {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .section-sub-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold);
+            display: inline-block;
+        }
+
+        .studio-title {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+        }
+        .studio-title span.italic-gold {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .studio-text {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: #5D4037;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .studio-text strong {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Founder Card (Premium Luxury Contrast Card) */
+        .founder-card {
+            background-color: var(--about-bg-card);
+            border: 1px solid var(--about-border);
+            border-radius: 20px;
+            padding: 3.5rem 3rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--gold-light), var(--gold));
+        }
+
+        .founder-tag {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .founder-name {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .founder-title {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: rgba(232, 220, 198, 0.6);
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            display: block;
+        }
+
+        .founder-bio {
+            font-family: var(--font-body);
+            font-size: 0.98rem;
+            color: rgba(232, 220, 198, 0.85);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .founder-bio strong {
+            color: white;
+            font-weight: 500;
+        }
+
+        .founder-quote {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--gold-light);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            border-left: 2px solid var(--gold-light);
+            padding-left: 1.2rem;
+        }
+
+        .founder-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        .skill-pill {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(232, 220, 198, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            color: white;
+            border-color: var(--gold-light);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Large Callout Section */
+        .callout-section {
+            padding: 8rem 0;
+            position: relative;
+            background: linear-gradient(180deg, transparent, rgba(169, 135, 84, 0.04), transparent);
+        }
+
+        .callout-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .callout-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(169, 135, 84, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(50px);
+            z-index: 0;
+        }
+
+        .callout-text {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 2rem;
+        }
+
+        .callout-text span.italic-gold {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .callout-author {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #5D4037;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pillars Section */
+        .pillars-section {
+            padding: 8rem 0;
+        }
+
+        .pillars-header {
+            text-align: left;
+            margin-bottom: 5rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .pillar-card {
+            background-color: #FAF7F2;
+            border: 1px solid var(--about-border);
+            border-radius: 16px;
+            padding: 4rem 3.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            box-shadow: 0 10px 30px rgba(169, 135, 84, 0.02);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(169, 135, 84, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(169, 135, 84, 0.08);
+            background-color: white;
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .pillar-num {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: rgba(169, 135, 84, 0.35);
+            font-weight: 500;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .pillar-card:hover .pillar-num {
+            color: var(--gold);
+        }
+
+        .pillar-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .pillar-desc {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: #5D4037;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Footer CTA Section */
+        .cta-section {
+            padding: 10rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(169, 135, 84, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 4.2rem;
+            color: var(--text-dark);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        .cta-title span.italic-gold {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .cta-desc {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            color: #5D4037;
+            margin-bottom: 3.5rem;
+        }
+
+        .btn-large-gold {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 0.5rem 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: transparent;
+            cursor: pointer;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        .btn-large-gold:hover {
+            color: var(--orange);
+            border-color: var(--orange);
+            letter-spacing: 3px;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.8rem; }
+            .grid-two-cols { grid-template-columns: 1fr; gap: 4rem; }
+            .studio-info { padding-right: 0; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-bottom: 1px solid var(--about-border); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-bottom: none; }
+            .stat-item:nth-child(4) { border-bottom: none; border-right: none; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .pillar-card { padding: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .cta-title { font-size: 2.8rem; }
+            .studio-title { font-size: 2.5rem; }
+            .founder-card { padding: 2.5rem 2rem; }
+            .stat-number { font-size: 2.5rem; }
+            .callout-text { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sparkles Ambient Background -->
+    <div class="sparkles-bg"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logo_1.0.png" alt="Tumbakaar Studios">
+            </a>
+            <div class="nav-links">
+                <a href="about.html" class="active">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#work">Work</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#process">Process</a>
+            </div>
+            <a href="index.html#contact" class="btn btn-orange btn-pill">Book a Call</a>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero-container">
+            <div class="about-hero-glow"></div>
+            <div class="container">
+                <div class="hero-sub-label scroll-animate">Our Story</div>
+                <h1 class="hero-title scroll-animate">
+                    Where Vision <br>
+                    <span class="italic-gold">Becomes Legacy.</span>
+                </h1>
+                <p class="hero-description scroll-animate">
+                    We are not just a studio. We are the directors, craftsmen, and visual architects — dedicated to transforming your most precious moments into cinematic masterpieces.
+                </p>
+                <a href="#stats" class="hero-scroll-btn scroll-animate">
+                    Scroll to explore <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Stats Grid Section -->
+        <section id="stats" class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item scroll-animate">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years in Industry</div>
+                    </div>
+                    <div class="stat-item scroll-animate" style="transition-delay: 0.1s;">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-item scroll-animate" style="transition-delay: 0.2s;">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Core Services</div>
+                    </div>
+                    <div class="stat-item scroll-animate" style="transition-delay: 0.3s;">
+                        <div class="stat-number">Pan India</div>
+                        <div class="stat-label">Remote Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Studio & Founder Section -->
+        <section class="studio-founder-section">
+            <div class="container">
+                <div class="grid-two-cols">
+                    <!-- Left Column: The Studio -->
+                    <div class="studio-info">
+                        <div class="section-sub-label scroll-animate">The Studio</div>
+                        <h2 class="studio-title scroll-animate">
+                            Born from a <span class="italic-gold">Passion for Cinema.</span>
+                        </h2>
+                        <p class="studio-text scroll-animate">
+                            Tumbakaar Studios was built on a simple belief—that <strong>every story deserves to be told beautifully</strong>. Whether it is the dynamic pacing of a social reel, the warmth of a family brand story, or a moving cinematic event film... we treat every project as a work of art.
+                        </p>
+                        <p class="studio-text scroll-animate">
+                            The name <strong>Tumbakaar</strong> symbolizes the spirit of craftspeople who mold, shape, refine, and bring ideas into raw physical existence. That is exactly what we do with every frame we touch.
+                        </p>
+                        <p class="studio-text scroll-animate">
+                            From a dynamic wedding film that makes you cry to high-end brand creatives, our studio is a <strong>one-stop creative powerhouse</strong> built for the modern age, serving clients across India, entirely remotely.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Founder Card -->
+                    <div class="founder-card scroll-animate">
+                        <span class="founder-tag">The Founder</span>
+                        <h3 class="founder-name">Shubhanshu</h3>
+                        <span class="founder-title">Founder & Premium Editor — Tumbakaar Studios</span>
+                        
+                        <p class="founder-bio">
+                            A graduate of <strong>AAFT (Asian Academy of Film & Television)</strong> — one of India's most prestigious media institutions — Shubhanshu brings over <strong>3 years of hands-on industry experience</strong> to every single project.
+                        </p>
+                        <p class="founder-bio">
+                            He founded Tumbakaar Studios to bring <strong>film-quality craft, precision color grading, and high-retention post-production</strong> to everyday creators, couples, and brands across India. Shubhanshu is dedicated to turning raw footage into cinematic assets that captivate audiences and leave a lasting impact.
+                        </p>
+                        <div class="founder-quote">
+                            "Premium quality shouldn't be a privilege; it should be accessible to every story."
+                        </div>
+                        
+                        <div class="founder-skills">
+                            <span class="skill-pill">Creative Lead</span>
+                            <span class="skill-pill">Premium Editor</span>
+                            <span class="skill-pill">Colorist</span>
+                            <span class="skill-pill">VFX & Motion</span>
+                            <span class="skill-pill">Post-Production</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Large Quote Section -->
+        <section class="callout-section">
+            <div class="callout-glow"></div>
+            <div class="container">
+                <div class="callout-container">
+                    <blockquote class="callout-text scroll-animate">
+                        "We don't just edit videos. We <span class="italic-gold">architect emotions</span> — frame by frame, beat by beat, story by story."
+                    </blockquote>
+                    <div class="callout-author scroll-animate">— Tumbakaar Studios Mission</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Create Section -->
+        <section class="pillars-section">
+            <div class="container">
+                <div class="pillars-header">
+                    <div class="section-sub-label scroll-animate">What We Create</div>
+                </div>
+                
+                <div class="pillars-grid">
+                    <!-- Pillar 1 -->
+                    <div class="pillar-card scroll-animate">
+                        <div class="pillar-top">
+                            <h3 class="pillar-title">Cinematic Reels</h3>
+                            <span class="pillar-num">01</span>
+                        </div>
+                        <p class="pillar-desc">
+                            Story-driven event highlights, social media reels, and brand commercials — crafted with precision color grading and high-retention editing.
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 2 -->
+                    <div class="pillar-card scroll-animate" style="transition-delay: 0.1s;">
+                        <div class="pillar-top">
+                            <h3 class="pillar-title">Exquisite E-Invites</h3>
+                            <span class="pillar-num">02</span>
+                        </div>
+                        <p class="pillar-desc">
+                            Luxury animated and static digital invitations — royal, floral, modern, and custom themes that make your event unforgettable before it begins.
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 3 -->
+                    <div class="pillar-card scroll-animate" style="transition-delay: 0.2s;">
+                        <div class="pillar-top">
+                            <h3 class="pillar-title">Creative Brand Design</h3>
+                            <span class="pillar-num">03</span>
+                        </div>
+                        <p class="pillar-desc">
+                            Visual identity systems, social media graphics, logo designs, and marketing collateral that define how the world sees your brand.
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 4 -->
+                    <div class="pillar-card scroll-animate" style="transition-delay: 0.3s;">
+                        <div class="pillar-top">
+                            <h3 class="pillar-title">Professional Shoots</h3>
+                            <span class="pillar-num">04</span>
+                        </div>
+                        <p class="pillar-desc">
+                            Photography and videography services for creators, events, fashion, and brands — capturing authentic moments with a cinematic lens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-glow"></div>
+            <div class="container">
+                <h2 class="cta-title scroll-animate">
+                    Ready to create your <span class="italic-gold">visual legacy?</span>
+                </h2>
+                <p class="cta-desc scroll-animate">Let's build something that lasts a lifetime.</p>
+                <a href="index.html#contact" class="btn-large-gold scroll-animate">
+                    Start a conversation &nbsp;&nbsp;&mdash;&mdash;&mdash;
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="premium-footer" style="border-top: 1px solid rgba(169, 135, 84, 0.15); background-color: #0b0705;">
+        <div class="container footer-container">
+            <!-- Col 1: Brand -->
+            <div class="footer-brand">
+                <span class="logo-text" style="display: block; margin-bottom: 1.5rem; color: var(--gold-light);">TUMBAKAAR</span>
+                <p>Elevating visual stories through premium cinematic editing, digital e-invites, and brand designs.</p>
+                <div class="footer-contact-direct">
+                    <a href="mailto:tumbakaarstudios@gmail.com"><i class="fas fa-envelope"></i> tumbakaarstudios@gmail.com</a>
+                    <a href="tel:+919304947979"><i class="fas fa-phone-alt"></i> +91 93049 47979</a>
+                </div>
+            </div>
+            
+            <!-- Col 2: Services -->
+            <div class="footer-links">
+                <h4>Our Expertise</h4>
+                <a href="index.html#services">Cinematic Reels</a>
+                <a href="index.html#services">Luxury E-Invites</a>
+                <a href="index.html#services">Brand Graphics</a>
+                <a href="index.html#services">Event Highlights</a>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="index.html#work">Portfolio</a>
+                <a href="pricing.html">Investment</a>
+                <a href="index.html#process">Our Journey</a>
+                <a href="index.html#contact">Contact Us</a>
+            </div>
+
+            <!-- Col 4: Socials -->
+            <div class="footer-socials">
+                <h4>Connect With Us</h4>
+                <p class="social-desc">Follow our creative journey and latest projects.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/tumbakaar_studios/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 Tumbakaar Studios. Crafted with passion. | <span style="color: var(--gold-light);">UDYAM Reg. No: UDYAM-BR-26-0231599</span></p>
+                </div>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Navbar scrolled effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 50);
+                }, { passive: true });
+            }
+
+            // 2. Mobile Menu Toggling
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
+            // 3. Scroll Triggered Fade-in Animations
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+            if (animatedElements.length > 0) {
+                const scrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            scrollObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+                animatedElements.forEach(el => scrollObserver.observe(el));
+            }
+
+            // 4. Coming Soon Socials Toast
+            function showComingSoonToast(event) {
+                event.preventDefault();
+                let toast = document.getElementById('coming-soon-toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'coming-soon-toast';
+                    toast.className = 'toast-notification';
+                    toast.innerHTML = `<i class="fas fa-info-circle toast-icon"></i> Tumbakaar Studios Social Channels are Coming Soon!`;
+                    document.body.appendChild(toast);
+                }
+                
+                toast.classList.add('show');
+                
+                if (window.toastTimeout) {
+                    clearTimeout(window.toastTimeout);
+                }
+                
+                window.toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            document.querySelectorAll('.social-icons a').forEach(link => {
+                link.addEventListener('click', showComingSoonToast);
+            });
+        });
+    </script>
+</body>
+</html>

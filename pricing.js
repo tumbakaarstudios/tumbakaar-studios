@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isEmail = href.includes('mailto:') || href.includes('tumbakaarstudios@gmail.com');
         
         // Check if it is a social media link (instagram, facebook, youtube, linkedin, or empty social links)
-        const isInstagram = href.includes('instagram.com');
+        const isInstagram = href.includes('instagram.com') && !href.includes('tumbakaar_studios');
         const isFacebook = href.includes('facebook.com');
         const isYouTube = href.includes('youtube.com') && !link.closest('.portfolio-item') && !link.closest('.modal-content'); // Do not block portfolio modal play button triggers
         const isLinkedIn = href.includes('linkedin.com');
